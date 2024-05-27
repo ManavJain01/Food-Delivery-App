@@ -2,7 +2,9 @@ import React from 'react'
 
 function App(){
   return (
-    <div>App</div>
+    <div className="flex justify-center items-center">
+      App
+    </div>
   )
 }
 
