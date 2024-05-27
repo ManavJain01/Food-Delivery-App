@@ -7,7 +7,7 @@ export default function Card() {
         <h1>Card Title</h1>
         <p>This is some Important text.</p>
         <div>
-          <select name="numbers" id="numbers" className="m-2 h-8 bg-green-700 rounded-md">
+          <select name="numbers" id="numbers" className="m-2 h-8 bg-blue-700 rounded-md">
             {Array.from(Array(6), (e,i)=>{
               return(
                 <option key={i+1} value={i+1}>{i+1}</option>
@@ -15,7 +15,7 @@ export default function Card() {
             })}
           </select>
 
-          <select name="size" id="size" className="m-2 h-8 bg-green-700 rounded-md">
+          <select name="size" id="size" className="m-2 h-8 bg-blue-700 rounded-md">
             <option value="half">Half</option>
             <option value="half">Full</option>
           </select>
