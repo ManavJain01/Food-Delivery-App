@@ -1,12 +1,22 @@
 // Importing local files
+import Card from "../components/Card";
+import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white h-lvh w-lvw">
+    <div className="flex flex-col bg-black text-white font-mono h-lvh w-lvw">
+      {/* NavBar */}
       <Navbar />
-      <div>Body</div>
+      
+      {/* Body */}
+      <div className="px-20 py-10">
+        <Carousel />
+        <Card />
+      </div>
+      
+      {/* Footer */}
       <Footer />
     </div>
   )
