@@ -1,10 +1,17 @@
-import React from 'react'
+// Importing React Packages
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+
+// Importing local files
+import Home from "./screens/Home"
+
 
 function App(){
   return (
-    <div className="flex justify-center items-center">
-      App
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
