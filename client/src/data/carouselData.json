@@ -1,20 +1,24 @@
 {
   "slides": [
     {
-      "src": "https://picsum.photos/seed/img1/600/400",
-      "alt": "Image 1"
+      "src": "https://www.foodiesfeed.com/wp-content/uploads/2023/04/strawberry-milk-splash.jpg",
+      "alt": "Shake"
     },
     {
-      "src": "https://picsum.photos/seed/img2/600/400",
-      "alt": "Image 2"
+      "src": "https://www.foodiesfeed.com/wp-content/uploads/2023/06/ice-cream-cone-splash.jpg",
+      "alt": "icecream"
     },
     {
-      "src": "https://picsum.photos/seed/img3/600/400",
-      "alt": "Image 3"
+      "src": "https://www.foodiesfeed.com/wp-content/uploads/2023/06/pouring-honey-on-pancakes.jpg",
+      "alt": "pancakes"
     },
     {
-      "src": "https://picsum.photos/seed/img4/600/400",
-      "alt": "Image 4"
+      "src": "https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg",
+      "alt": "omlette"
+    },
+    {
+      "src": "https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
+      "alt": "Burger"
     }
   ]
 }

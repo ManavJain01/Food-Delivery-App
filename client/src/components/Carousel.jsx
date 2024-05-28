@@ -31,7 +31,7 @@ export default function Carousel(){
             src={e.src}
             alt={e.alt}
             key={i}
-            className={slide === i ? "w-lvw h-[30rem] object-cover rounded-md shadow-md shadow-gray-800" : "hidden" } />
+            className={slide === i ? "w-lvw h-[30rem] rounded-md shadow-md shadow-gray-800" : "hidden" } />
         )}
 
         {/* Right Arrow */}
