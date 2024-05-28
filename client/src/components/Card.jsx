@@ -3,7 +3,7 @@ import chillyPanner from '../Images/chilly panner.jpg'
 
 export default function Card() {
   return (
-    <div className="flex flex-col w-fit border-2 border-gray-500 rounded-lg">
+    <div className="flex flex-col min-w-[18rem] border-2 border-gray-500 rounded-lg">
       <img
         src={chillyPanner}
         alt="Card Image"

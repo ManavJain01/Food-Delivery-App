@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const port = 5000
 const mongoDB = require("./db")
+app.use(express.json())
 
 // Routes
 app.get('/', (req, res) => {
@@ -10,7 +11,6 @@ app.get('/', (req, res) => {
 })
 
 // app.use
-app.use(express.json())
 app.use('/api', require("./Routes/CreateUser"))
 
 // Connecting MongoDB Server

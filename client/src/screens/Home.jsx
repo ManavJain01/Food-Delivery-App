@@ -13,7 +13,12 @@ export default function Home() {
       {/* Body */}
       <div className="flex flex-col gap-10">
         <Carousel />
-        <div className="px-20 py-10">
+        <div className="flex justify-start gap-10 flex-wrap px-5 sm:px-20 py-10">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           <Card />
         </div>
       </div>

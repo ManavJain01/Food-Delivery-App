@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 function Navbar(){
   // NavBar Links
-  const NavLinks = ["/", "login"]
+  const NavLinks = ["/", "login", "/createUser"]
 
   return (
     <nav className="flex items-center gap-14 bg-blue-700 py-3 px-5">
@@ -11,7 +11,7 @@ function Navbar(){
 
       <ul className="flex">
         {
-          ["Home","Login"].map((e, i) => 
+          ["Home","Login","SignUp"].map((e, i) => 
             <li key={e} className="text-xl px-5 py-1 rounded-md hover:bg-blue-800 active:bg-blue-900">
               <Link to={NavLinks[i]}>{e}</Link>
             </li>
