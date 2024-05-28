@@ -1,17 +1,15 @@
-// Importing Local Images
-import chillyPanner from '../Images/chilly panner.jpg'
-
-export default function Card() {
+export default function Card({ data }) {
+  console.log(data);
   return (
-    <div className="flex flex-col min-w-[18rem] border-2 border-gray-500 rounded-lg">
+    <div className="flex flex-col w-[18rem] border-2 border-gray-500 rounded-lg">
       <img
-        src={chillyPanner}
+        src={data.img}
         alt="Card Image"
-        className="h-48 object-contain" />
+        className="h-48" />
 
-      <div className="flex flex-col p-5">
-        <h1>Card Title</h1>
-        <p>This is some Important text.</p>
+      <div className="flex flex-col p-3">
+        <h1 className="text-xl mb-5">{data.name}</h1>
+        <p className="text-sm text-gray-500">{data.description}</p>
         <div>
           <select name="numbers" id="numbers" className="m-2 h-8 bg-blue-700 rounded-md">
             {Array.from(Array(6), (e,i)=>{
@@ -22,8 +20,8 @@ export default function Card() {
           </select>
 
           <select name="size" id="size" className="m-2 h-8 bg-blue-700 rounded-md">
-            <option value="half">Half</option>
-            <option value="half">Full</option>
+            <option value="half">Rs. {data.options[0].half}</option>
+            <option value="full">Rs. {data.options[0].full}</option>
           </select>
 
           <div className="inline-block">
