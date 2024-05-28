@@ -1,8 +1,18 @@
+// Importing Packages
 const express = require('express')
 const router = express.Router()
 const { body, validationResult } = require('express-validator');
 
+// Importing local files
 const User = require('../models/User')
+
+// Hashing
+const bcrypt = require("bcryptjs")
+
+// Json Web Token
+const jwt = require("jsonwebtoken");
+
+const jwtSecret = "ThisIsTheSecretKeyThatWillBeSent"
 
 router.post("/loginUser", [
   body('email').isEmail(),
@@ -21,9 +31,18 @@ router.post("/loginUser", [
 
     if(!userData) return res.status(400).json({ errors: "Try logging with correct credentials" })
     
-    if(req.body.password !== userData.password)  return res.status(400).json({ errors: "Try logging with correct credentials" })
+    const pwdCompare = await bcrypt.compare(req.body.password, userData.password)
+    if(!pwdCompare)  return res.status(400).json({ errors: "Try logging with correct credentials" })
 
-    return res.json({ success:true })
+    const data = {
+      user:{
+        id:userData.id
+      }
+    }
+    
+    const authToken = jwt.sign(data, jwtSecret)
+
+    return res.json({ success: true, authToken: authToken})
   } catch (error) {
     console.log(error);
     res.json({success:false})

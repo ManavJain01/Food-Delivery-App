@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 // Importing Local Files
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function Signup(){
   const [credentials, setCredentials] = useState({name:"", email:"", password:"", geolocation:""})
@@ -61,6 +62,8 @@ export default function Signup(){
           <Link to="/login" className="bg-red-400 w-fit px-5 py-1 rounded-lg">Already a User</Link>
         </div>
       </form>
+
+      <Footer />
     </div>
   )
 }
