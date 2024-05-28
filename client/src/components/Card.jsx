@@ -1,9 +1,15 @@
+// Importing Local Images
+import chillyPanner from '../Images/chilly panner.jpg'
+
 export default function Card() {
   return (
-    <div className="flex gap-5 w-fit py-2 px-5 border-2 border-gray-500 rounded-lg">
-      <img src="" alt="Card Image" />
+    <div className="flex flex-col w-fit border-2 border-gray-500 rounded-lg">
+      <img
+        src={chillyPanner}
+        alt="Card Image"
+        className="h-48 object-contain" />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col p-5">
         <h1>Card Title</h1>
         <p>This is some Important text.</p>
         <div>
