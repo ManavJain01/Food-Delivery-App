@@ -16,7 +16,7 @@ function Navbar(){
   // Functions
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
-    navigate("/login")
+    navigate("/");
   }
 
   window.onresize = window.onload = function() {

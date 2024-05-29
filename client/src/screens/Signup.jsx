@@ -36,7 +36,7 @@ export default function Signup(){
   }
 
   return (
-    <div className="h-lvh bg-gray-950 text-white">
+    <div className="h-lvh bg-gray-950 text-white font-mono">
       <Navbar />
 
       <form onSubmit={handleSubmit} className="text-2xl px-20 py-10 flex flex-col gap-10">

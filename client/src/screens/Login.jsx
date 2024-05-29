@@ -29,7 +29,6 @@ export default function Login() {
 
     if(json.success){
       localStorage.setItem("authToken", json.authToken);
-      console.log(localStorage.getItem("authToken"));
       navigate("/")
     }
   }
@@ -39,7 +38,7 @@ export default function Login() {
   }
   
   return (
-    <div className="h-lvh bg-gray-950 text-white">
+    <div className="h-lvh bg-gray-950 text-white font-mono">
       <Navbar />
 
       <form onSubmit={handleSubmit} className="text-2xl px-20 py-10 flex flex-col gap-10">
