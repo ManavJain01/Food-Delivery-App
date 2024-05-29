@@ -34,7 +34,7 @@ function Navbar(){
   // Check if logged in or not
   localStorage.getItem("authToken") ? NavOptions = ["Home", "My Orders", "My Cart", "LogOut"] : NavOptions = ["Home", "Login", "SignUp"]
   localStorage.getItem("authToken") ? NavLinks = ["/", "/myOrders", "/myCart", ""] : NavLinks = ["/", "/login", "/createUser"]
-  localStorage.getItem("authToken") ? NavCSS = ["md:mr-auto", "", "", "md:mr-10 text-red-700"] : NavCSS = ["mr-auto", "", "mr-10"]
+  localStorage.getItem("authToken") ? NavCSS = ["md:mr-auto", "", "", "md:mr-10 text-red-700"] : NavCSS = ["md:mr-auto", "", "md:mr-10"]
   localStorage.getItem("authToken") ? NavOnClick = ["", "", "", handleLogOut] : NavOnClick = ["", "", ""]
 
 
@@ -48,7 +48,15 @@ function Navbar(){
         {
           NavOptions.map((e, i) => 
             <li key={e} className={`${NavCSS[i]} ${showMenu ? "flex justify-center relative top-20" : "hidden md:flex"} px-5 py-1 rounded-md hover:bg-blue-800 active:bg-blue-900`}>
-              <Link to={NavLinks[i]} onClick={NavOnClick[i] != "" ? () => NavOnClick[i]() : ""}>{e}</Link>
+              <Link to={NavLinks[i]} onClick={NavOnClick[i] != "" ? () => NavOnClick[i]() : ""} className={`${e == "My Cart" ? "relative" : ""}`}>
+                {e == "My Cart" 
+                  ?<div className="absolute -right-4 top-[6px] w-[14px] h-[14px] bg-red-700 rounded-full">
+                    <div className="absolute -top-[6px] left-[3px] text-[9px] text-center">1</div>
+                  </div> : ""
+                }
+                
+                {e}
+              </Link>
             </li>
           )
         }
