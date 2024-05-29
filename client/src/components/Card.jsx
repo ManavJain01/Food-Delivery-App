@@ -22,8 +22,27 @@ export default function Card({ data }) {
 
   // Functions
   const handleAddToCart = async() => {
+    let food = []
+    for (const item of cartData){
+      if(item.id === data._id){
+        food = item;
+
+        break;
+      }
+    }
+    if(food != []){
+      if(food.size === size){
+        await dispatch({ type: "UPDATE", id: data._id, price: finalPrice, qty: qty })
+        return
+      }
+      else if(food.size !== size){
+        await dispatch({type:"ADD", id: data._id, name:data.name, img:data.img, price:finalPrice, qty: qty, size: size})
+        return
+      }
+      return
+    }
+
     await dispatch({type:"ADD", id: data._id, name:data.name, img:data.img, price:finalPrice, qty: qty, size: size})
-    console.log(cartData);
   }
 
   // useEffect

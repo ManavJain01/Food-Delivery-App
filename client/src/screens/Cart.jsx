@@ -4,10 +4,14 @@ import { useCart, useDispatchCart } from '../components/ContextReducer';
 // Importing local images
 import trash from '../Images/trash_bin.jpg'
 
+// Importing React Packages
 
 export default function Cart() {
+  // My Context API
   let data = useCart();
   let dispatch = useDispatchCart();
+
+  // My Empty Cart
   if(data.length === 0){
     return(
       <div className="text-white bg-black min-h-lvh font-mono">        
@@ -16,17 +20,18 @@ export default function Cart() {
     )
   }
 
+  // Total Price
   let totalPrice = data.reduce((total, food) => total + food.price, 0)
 
   return (
-    <div className="text-white bg-black min-h-lvh font-mono">
+    <div className="text-white bg-black h-full font-mono">
 
-      <div className="flex flex-col items-center gap-10 py-10">
+      <div className="flex flex-col items-center gap-10 py-20">
         <table>
           <thead>
-            <tr className="text-blue-700 flex gap-28">
+            <tr className="text-blue-700 flex /justify-around gap-20">
               <th scope="col">#</th>
-              <th scope="col">Name</th>
+              <th scope="col" className="mr-20">Name</th>
               <th scope="col">Quantity</th>
               <th scope="col">Option</th>
               <th scope="col">Amount</th>
@@ -34,15 +39,15 @@ export default function Cart() {
             </tr>
           </thead>
 
-          <tbody className="">
+          <tbody>
             {data.map((food, index) => (
-              <tr className="flex gap-16">
+              <tr key={index} className="flex justify-between gap-20">
                 <th scope="row">{ index + 1 }</th>
-                <td>{food.name}</td>
+                <td className="whitespace-nowrap">{food.name}</td>
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
-                <td><button type="button"><img src={trash} className="size-20" onClick={() => {dispatchEvent({ type: "REMOVE", index: index }) }} /></button></td>
+                <td><button type="button"><img src={trash} alt="delete" className="size-8" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button></td>
               </tr>
             ))}
           </tbody>

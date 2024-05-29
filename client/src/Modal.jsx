@@ -30,7 +30,7 @@ export default function Modal({ children, onClose }) {
     <>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
-        <button onClick={onClose} className="text-white w-full flex justify-end"> <RxCross1 className="size-8 absolute top-5 right-5" /> </button>
+        <button onClick={onClose} className="text-white w-full flex justify-end"> <RxCross1 className="bg-red-600 size-8 absolute top-5 right-5" /> </button>
         {children}
       </div>
     </>,
