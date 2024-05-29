@@ -7,7 +7,7 @@ import { slides } from "../data/carouselData.json"
 // Importing React Packages
 import { useState } from 'react'
 
-export default function Carousel(){
+export default function Carousel({ search, setSearch }){
   const [slide, setSlide] = useState(0)
 
   const nextSlide = () => {
@@ -49,10 +49,14 @@ export default function Carousel(){
       </div>
 
       {/* Search Bar */}
-      <form className="absolute bottom-10 z-10 flex w-full px-20 gap-3">
-        <input type="search" placeholder="Search" className="flex-1 bg-gray-800 text-white px-3 py-2 rounded-md outline-none" />
-        <button type="submit" className="text-black font-bold bg-blue-400 px-5 py-1 rounded-md">Search</button>
-      </form>
+      <div className="absolute bottom-10 z-10 flex w-full px-20 gap-3">
+        <input
+          type="search"
+          placeholder="Search"
+          value={search}
+          onChange={(e) => {setSearch(e.target.value)}}
+          className="flex-1 bg-gray-800 text-white px-3 py-2 rounded-md outline-none" />
+      </div>
     </div>
   )
 }

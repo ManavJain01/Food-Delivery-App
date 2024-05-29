@@ -8,9 +8,9 @@ import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
+  const [search, setSearch] = useState("");
 
   const loadData = async () => {
     let response = await fetch("http://localhost:5000/api/foodData",{
@@ -37,7 +37,7 @@ export default function Home() {
       
       {/* Body */}
       <div className="flex flex-col gap-10">
-        <Carousel />
+        <Carousel search={search} setSearch={setSearch} />
         <div className="flex justify-start gap-10 flex-wrap px-5 sm:px-20 py-10">
           {foodCat != [] 
             ?foodCat.map(e => {
@@ -49,13 +49,17 @@ export default function Home() {
                   
                   <div className="flex gap-10 flex-wrap">
                     {foodItem != []
-                      ?foodItem.filter(f => f.CategoryName === e.CategoryName).map(filterItems => {
-                        return(
-                          <div key={filterItems._id}>
-                            <Card data={filterItems} />
-                          </div>
-                        )
-                      })
+                      ?foodItem.filter(
+                        f => (f.CategoryName === e.CategoryName)
+                        && (f.name.toLowerCase().includes(search.toLowerCase()) )
+                      ).map(filterItems => {
+                          return(
+                            <div key={filterItems._id}>
+                              <Card data={filterItems} />
+                            </div>
+                          )
+                        }
+                      )
                       :<div>No Such Data Found</div>
                     }
                   </div>
