@@ -6,7 +6,7 @@ export default function Card({ data }) {
     <div className="flex flex-col w-[18rem] border-2 border-gray-500 rounded-lg">
       <img
         src={data.img}
-        alt="Card Image"
+        alt="..."
         className="h-48" />
 
       <div className="flex flex-col p-3">

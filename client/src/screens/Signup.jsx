@@ -1,12 +1,14 @@
 // Importing React Packages
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Importing Local Files
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default function Signup(){
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({name:"", email:"", password:"", geolocation:""})
 
   const handleSubmit = async (e) => {
@@ -21,10 +23,11 @@ export default function Signup(){
     });
     
     const json = await response.json()
-    console.log(json);
 
     if(!json.success){
       alert("Enter Valid Credentials")
+    }else{
+      navigate("/");
     }
   }
 
