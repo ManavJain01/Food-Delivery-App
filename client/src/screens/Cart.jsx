@@ -1,5 +1,4 @@
 // Importing local files
-import Navbar from '../components/Navbar';
 import { useCart, useDispatchCart } from '../components/ContextReducer';
 
 // Importing local images
@@ -11,20 +10,21 @@ export default function Cart() {
   let dispatch = useDispatchCart();
   if(data.length === 0){
     return(
-      <div>
-        <div>The Cart is Empty!</div>
+      <div className="text-white bg-black min-h-lvh font-mono">        
+        <div className="text-4xl py-40 flex justify-center items-center">The Cart is Empty!</div>
       </div>
     )
   }
 
+  let totalPrice = data.reduce((total, food) => total + food.price, 0)
+
   return (
     <div className="text-white bg-black min-h-lvh font-mono">
-      <Navbar />
 
       <div className="flex flex-col items-center gap-10 py-10">
         <table>
           <thead>
-            <tr className="text-blue-700 flex gap-20">
+            <tr className="text-blue-700 flex gap-28">
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Quantity</th>
@@ -34,21 +34,21 @@ export default function Cart() {
             </tr>
           </thead>
 
-          {/* <tbody>
+          <tbody className="">
             {data.map((food, index) => (
-              <tr>
+              <tr className="flex gap-16">
                 <th scope="row">{ index + 1 }</th>
                 <td>{food.name}</td>
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
-                <td><button type="button"><img src={trash} onClick={() => {dispatchEvent({})}} /></button></td>
+                <td><button type="button"><img src={trash} className="size-20" onClick={() => {dispatchEvent({ type: "REMOVE", index: index }) }} /></button></td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>
         </table>
 
-        {/* <div><h1>Total Price: {totalPrice}/-</h1></div> */}
+        <div><h1>Total Price: {totalPrice}/-</h1></div>
         
         <div>
           <button className="bg-blue-700 py-1 px-5 rounded-md">Check Out</button>

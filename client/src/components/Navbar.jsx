@@ -6,12 +6,20 @@ import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 
+// Importing local files
+import { useCart } from "./ContextReducer";
+import Modal from "../Modal";
+import Cart from "../screens/Cart";
+
 function Navbar(){
   // Initialising Navigation
   const navigate = useNavigate();
 
+  const data = useCart();
+
   // UseStates
   const [showMenu, setShowMenu] = useState(false)
+  const [cartView, setCartView] = useState(false)
 
   // Functions
   const handleLogOut = () => {
@@ -33,9 +41,9 @@ function Navbar(){
 
   // Check if logged in or not
   localStorage.getItem("authToken") ? NavOptions = ["Home", "My Orders", "My Cart", "LogOut"] : NavOptions = ["Home", "Login", "SignUp"]
-  localStorage.getItem("authToken") ? NavLinks = ["/", "/myOrders", "/myCart", ""] : NavLinks = ["/", "/login", "/createUser"]
+  localStorage.getItem("authToken") ? NavLinks = ["/", "/myOrders", "", ""] : NavLinks = ["/", "/login", "/createUser"]
   localStorage.getItem("authToken") ? NavCSS = ["md:mr-auto", "", "", "md:mr-10 text-red-700"] : NavCSS = ["md:mr-auto", "", "md:mr-10"]
-  localStorage.getItem("authToken") ? NavOnClick = ["", "", "", handleLogOut] : NavOnClick = ["", "", ""]
+  localStorage.getItem("authToken") ? NavOnClick = ["", "", ()=>setCartView(true), handleLogOut] : NavOnClick = ["", "", ""]
 
 
   return (
@@ -49,18 +57,21 @@ function Navbar(){
           NavOptions.map((e, i) => 
             <li key={e} className={`${NavCSS[i]} ${showMenu ? "flex justify-center relative top-20" : "hidden md:flex"} px-5 py-1 rounded-md hover:bg-blue-800 active:bg-blue-900`}>
               <Link to={NavLinks[i]} onClick={NavOnClick[i] != "" ? () => NavOnClick[i]() : ""} className={`${e == "My Cart" ? "relative" : ""}`}>
+                {/* show my Cart length */}
                 {e == "My Cart" 
                   ?<div className="absolute -right-4 top-[6px] w-[14px] h-[14px] bg-red-700 rounded-full">
-                    <div className="absolute -top-[6px] left-[3px] text-[9px] text-center">1</div>
+                    <div className="absolute -top-[6px] left-[3px] text-[9px] text-center">{data.length}</div>
                   </div> : ""
                 }
-                
+                {/* My Options */}
                 {e}
               </Link>
             </li>
           )
         }
       </ul>
+
+      {cartView ? <Modal onClose={()=>setCartView(false)}><Cart /></Modal> : null}
 
       {/* My HamMenu */}
       {showMenu 
