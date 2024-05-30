@@ -31,11 +31,11 @@ export default function Carousel({ search, setSearch }){
             src={e.src}
             alt={e.alt}
             key={i}
-            className={slide === i ? "w-lvw h-[30rem] rounded-md shadow-md shadow-gray-800" : "hidden" } />
+            className={slide === i ? "w-lvw h-[30rem] object-cover object-left rounded-md shadow-md shadow-gray-800" : "hidden" } />
         )}
 
         {/* Right Arrow */}
-        <BsArrowRightCircleFill onClick={() => nextSlide()} className="absolute right-14 w-8 h-8 cursor-pointer" />
+        <BsArrowRightCircleFill onClick={() => nextSlide()} className="absolute right-10 w-8 h-8 cursor-pointer" />
 
         {/* Indicators */}
         {/* <span className="absolute flex bottom-5">

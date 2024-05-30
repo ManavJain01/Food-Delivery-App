@@ -1,5 +1,8 @@
+// Importing env file
+require("dotenv").config();
+
 const mongoose = require('mongoose')
-const mongoURI = 'mongodb+srv://bestFood:bestFoodHere@cluster0.lpfyood.mongodb.net/bestfood?retryWrites=true&w=majority&appName=Cluster0'
+const mongoURI = process.env.MONGODB_PASSWORD
 const mongoDB = async() => {
   try {
     await mongoose.connect(mongoURI);

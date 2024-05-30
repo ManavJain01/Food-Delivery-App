@@ -23,5 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# Hide this configuration file
+.env
+
 # Ignoring local files
 My Personal startups.txt
+
+vercel.json

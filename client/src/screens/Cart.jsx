@@ -22,9 +22,8 @@ export default function Cart() {
 
   // Functions
   const handleCheckOut = async () => {
-    console.log(data);
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch("http://localhost:5000/api/orderData",{
+    let response = await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/orderData`,{
       method:'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,8 +34,6 @@ export default function Cart() {
         order_date: new Date().toDateString()
       })
     });
-
-    console.log("JSON RESPONSE:::::", response.status)
 
     if(response.status === 200){
       dispatch({type:"DROP"})

@@ -12,7 +12,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     //Synthetic event
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/loginUser", {
+    const response = await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/loginUser`, {
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
@@ -21,7 +21,6 @@ export default function Login() {
     });
     
     const json = await response.json()
-    console.log(json);
 
     if(!json.success){
       alert("Enter Valid Credentials")

@@ -11,7 +11,7 @@ export default function MyOrders() {
 
   // Functions
   const fetchMyOrder = async () => {
-    await fetch("http://localhost:5000/api/myOrderData", {
+    await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/myOrderData`, {
       method:'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export default function MyOrders() {
                             <div key={arrayData.id}>
                               {arrayData.Order_date
                                 ?<div className="text-2xl flex flex-col gap-2">
-                                  {data = arrayData.Order_date}
+                                  <span className="px-5">{data = arrayData.Order_date}</span>
                                   <hr />
                                 </div>
                               
@@ -68,7 +68,9 @@ export default function MyOrders() {
                   )
                 })
                 
-                : ""
+                : <div className="text-3xl flex justify-center my-20">
+                    No History Found!!!
+                  </div>
             )
           })
           

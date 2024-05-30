@@ -14,7 +14,7 @@ export default function Signup(){
   const handleSubmit = async (e) => {
     //Synthetic event
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createUser", {
+    const response = await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/createUser`, {
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
