@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 const mongoose = require('mongoose')
-const mongoURI = process.env.MONGODB_PASSWORD
+const mongoURI = process.env.MONGODB_URL
 const mongoDB = async() => {
   try {
     await mongoose.connect(mongoURI);
