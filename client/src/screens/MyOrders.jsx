@@ -30,41 +30,41 @@ export default function MyOrders() {
   }, [])
 
   return (
-    <div className="text-white bg-black flex flex-col justify-between min-h-lvh font-mono">
+    <div className="text-white bg-black flex flex-col justify-between gap-10 min-h-lvh font-mono">
       <Navbar />
 
-      <div>
+      <div className="flex-1 flex flex-col gap-5">
         {orderData != {}
           ? Array(orderData).map(data => {
             return(
               data.orderData
                 ?data.orderData.order_data.slice(0).reverse().map((item) => {
                   return(
-                    item.map((arrayData) => {
-                      return(
-                        <div>
-                          {arrayData.Order_date
-                            ?<div>
-                              {data = arrayData.Order_date}
-                              <hr />
-                            </div>
-                          
-                            :<div>
-                                <img src={arrayData.img} alt='...' />
-                                <div>
-                                  <h1>{arrayData.name}</h1>
-                                  <div>
-                                    <span>{arrayData.qty}</span>
-                                    <span>{arrayData.size}</span>
-                                    <span>{data}</span>
-                                    <span>rs.{arrayData.price}/-</span>
-                                  </div>
+                        item.map((arrayData) => {
+                          return(
+                            <div key={arrayData.id}>
+                              {arrayData.Order_date
+                                ?<div className="text-2xl flex flex-col gap-2">
+                                  {data = arrayData.Order_date}
+                                  <hr />
                                 </div>
+                              
+                                :<div className="ml-5 mt-5 flex gap-5 w-fit border-2 border-gray-700">
+                                    <img src={arrayData.img} alt='...' className="w-20" />
+                                    <div className="py-2 flex flex-col justify-between">
+                                      <h1>{arrayData.name}</h1>
+                                      <div className="text-gray-500 text-sm flex flex-col pr-5">
+                                        <span>Quantity: {arrayData.qty}</span>
+                                        <span>Size: {arrayData.size}</span>
+                                        <span>Order placed on {data}</span>
+                                        <span>Total Amount: rs.{arrayData.price}/-</span>
+                                      </div>
+                                    </div>
+                                </div>
+                              }
                             </div>
-                          }
-                        </div>
-                      )
-                    })
+                          )
+                        })
                   )
                 })
                 
