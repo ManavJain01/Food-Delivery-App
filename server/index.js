@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 app.use('/api', require("./Routes/CreateUser"))
 app.use('/api', require("./Routes/LoginUser"))
 app.use('/api', require("./Routes/DisplayData"))
+app.use('/api', require("./Routes/OrderData"))
 
 // Connecting MongoDB Server
 mongoDB();
