@@ -22,8 +22,7 @@ function Navbar(){
   const [cartView, setCartView] = useState(false)
 
   // Variables
-  let name = localStorage.getItem('userName').split(' ')[0];
-
+  let name = localStorage.getItem('userName') && localStorage.getItem('userName').split(' ')[0];
   // Functions
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
