@@ -23,7 +23,7 @@ export default function Carousel({ search, setSearch }){
       {/* Carousel */}
       <div className="relative flex justify-center items-center">
          {/* Left Arrow */}
-         <BsArrowLeftCircleFill onClick={() => prevSlide()} className="absolute left-5 w-8 h-8 cursor-pointer" />
+         <BsArrowLeftCircleFill onClick={() => prevSlide()} className="absolute left-5 text-gray-300 w-8 h-8 cursor-pointer" />
 
          {/* Slides */}
          {slides.map((e, i) => 
@@ -35,7 +35,7 @@ export default function Carousel({ search, setSearch }){
         )}
 
         {/* Right Arrow */}
-        <BsArrowRightCircleFill onClick={() => nextSlide()} className="absolute right-10 w-8 h-8 cursor-pointer" />
+        <BsArrowRightCircleFill onClick={() => nextSlide()} className="absolute right-10 text-gray-300 w-8 h-8 cursor-pointer" />
 
         {/* Indicators */}
         {/* <span className="absolute flex bottom-5">

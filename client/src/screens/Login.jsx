@@ -50,7 +50,7 @@ export default function Login() {
 
         <div className="flex flex-col gap-2">
           <label htmlFor="password">Email password</label>
-          <input type="password" name="password" value={credentials.password} onChange={onChangeValue} className="bg-transparent px-5 py-2 border-2 border-gray-700 rounded-lg outline-none" />
+          <input type="text" name="password" value={credentials.password} onChange={onChangeValue} className="bg-transparent px-5 py-2 border-2 border-gray-700 rounded-lg outline-none" />
         </div>
 
         <div className="flex gap-5">
