@@ -3,6 +3,9 @@ const express = require('express')
 const router = express.Router()
 const { body, validationResult } = require('express-validator');
 
+// Importing env file
+require("dotenv").config();
+
 // Importing local files
 const User = require('../models/User')
 
@@ -12,7 +15,7 @@ const bcrypt = require("bcryptjs")
 // Json Web Token
 const jwt = require("jsonwebtoken");
 
-const jwtSecret = "ThisIsTheSecretKeyThatWillBeSent"
+const jwtSecret = process.env.JWT_SECRET
 
 router.post("/loginUser", [
   body('email').isEmail(),
@@ -42,7 +45,7 @@ router.post("/loginUser", [
     
     const authToken = jwt.sign(data, jwtSecret)
 
-    return res.json({ success: true, authToken: authToken})
+    return res.json({ success: true, authToken: authToken, name: userData.name})
   } catch (error) {
     console.log(error);
     res.json({success:false})

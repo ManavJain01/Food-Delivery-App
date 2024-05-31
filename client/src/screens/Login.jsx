@@ -27,6 +27,7 @@ export default function Login() {
     }
 
     if(json.success){
+      localStorage.setItem("userName", json.name);
       localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", json.authToken);
       navigate("/")
@@ -49,7 +50,7 @@ export default function Login() {
 
         <div className="flex flex-col gap-2">
           <label htmlFor="password">Email password</label>
-          <input type="text" name="password" value={credentials.password} onChange={onChangeValue} className="bg-transparent px-5 py-2 border-2 border-gray-700 rounded-lg outline-none" />
+          <input type="password" name="password" value={credentials.password} onChange={onChangeValue} className="bg-transparent px-5 py-2 border-2 border-gray-700 rounded-lg outline-none" />
         </div>
 
         <div className="flex gap-5">

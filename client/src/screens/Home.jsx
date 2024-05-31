@@ -31,7 +31,7 @@ export default function Home() {
   } ,[])
 
   return (
-    <div className="flex flex-col bg-black text-white font-mono min-h-lvh w-lvw overflow-x-hidden">
+    <div className="flex flex-col bg-black text-white font-mono min-h-lvh overflow-x-hidden">
       {/* NavBar */}
       <Navbar />
       

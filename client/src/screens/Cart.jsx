@@ -44,30 +44,30 @@ export default function Cart() {
   let totalPrice = data.reduce((total, food) => total + food.price, 0)
 
   return (
-    <div className="text-white bg-black h-full font-mono">
+    <div className="text-white bg-black h-full font-mono overflow-auto">
 
       <div className="flex flex-col items-center gap-10 py-20">
-        <table>
+        <table className="w-[80%] border-2 border-gray-700">
           <thead>
-            <tr className="text-blue-700 flex /justify-around gap-20">
-              <th scope="col">#</th>
-              <th scope="col" className="mr-20">Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Option</th>
-              <th scope="col">Amount</th>
-              <th scope="col"></th>
+            <tr className="text-blue-700 border-2 border-gray-700 border-collapse">
+              <th scope="col" className="p-3 text-left tracking-wide border-2 border-gray-700 border-collapse">#</th>
+              <th scope="col" className="p-3 w-full text-left tracking-wide border-2 border-gray-700 border-collapse">Name</th>
+              <th scope="col" className="p-3 text-left tracking-wide border-2 border-gray-700 border-collapse">Quantity</th>
+              <th scope="col" className="p-3 text-left tracking-wide border-2 border-gray-700 border-collapse">Option</th>
+              <th scope="col" className="p-3 text-left tracking-wide border-2 border-gray-700 border-collapse">Amount</th>
+              <th scope="col" className="p-3 text-left tracking-wide border-2 border-gray-700 border-collapse">Remove</th>
             </tr>
           </thead>
 
           <tbody>
             {data.map((food, index) => (
-              <tr key={index} className="flex justify-between gap-20">
-                <th scope="row">{ index + 1 }</th>
-                <td className="whitespace-nowrap">{food.name}</td>
-                <td>{food.qty}</td>
-                <td>{food.size}</td>
-                <td>{food.price}</td>
-                <td><button type="button"><img src={trash} alt="delete" className="size-8" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button></td>
+              <tr key={index} className={`${index%2==0 ? "text-gray-400" : "text-white"} text-sm border-2 border-gray-700 border-collapse`}>
+                <th className="px-5" scope="row">{ index + 1 }</th>
+                <td className="px-5 whitespace-nowrap border-2 border-gray-700 border-collapse">{food.name}</td>
+                <td className="px-5 border-2 border-gray-700 border-collapse">{food.qty}</td>
+                <td className="px-5 border-2 border-gray-700 border-collapse">{food.size}</td>
+                <td className="px-5 border-2 border-gray-700 border-collapse">{food.price}</td>
+                <td className="px-5 border-2 border-gray-700 border-collapse"><button type="button"><img src={trash} alt="delete" className="size-8 mt-2" onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button></td>
               </tr>
             ))}
           </tbody>

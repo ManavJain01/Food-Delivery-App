@@ -7,13 +7,19 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default function Signup(){
+  // UseNavigate
   const navigate = useNavigate();
 
+  // UseStates
   const [credentials, setCredentials] = useState({name:"", email:"", password:"", geolocation:""})
 
+  // Functions
   const handleSubmit = async (e) => {
     //Synthetic event
     e.preventDefault();
+    localStorage.setItem("userName", credentials.name);
+
+
     const response = await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/createUser`, {
       method: 'POST',
       headers:{
@@ -27,6 +33,10 @@ export default function Signup(){
     if(!json.success){
       alert("Enter Valid Credentials")
     }else{
+      console.log(json);
+      localStorage.setItem("userName", credentials.name);
+      localStorage.setItem("userEmail", credentials.email);
+      localStorage.setItem("authToken", json.authToken);
       navigate("/");
     }
   }
@@ -52,7 +62,7 @@ export default function Signup(){
 
         <div className="flex flex-col gap-2">
           <label htmlFor="password">Email password</label>
-          <input type="text" name="password" value={credentials.password} onChange={onChangeValue} className="bg-transparent px-5 py-2 border-2 border-gray-700 rounded-lg outline-none" />
+          <input type="password" name="password" value={credentials.password} onChange={onChangeValue} className="bg-transparent px-5 py-2 border-2 border-gray-700 rounded-lg outline-none" />
         </div>
 
         <div className="flex flex-col gap-2">

@@ -9,6 +9,11 @@ const User = require('../models/User')
 // Hashing
 const bcrypt = require("bcryptjs")
 
+// Json Web Token
+const jwt = require("jsonwebtoken");
+
+const jwtSecret = process.env.JWT_SECRET
+
 // Getting route request
 router.post("/createUser", [
     body('email').isEmail(),
@@ -33,7 +38,9 @@ router.post("/createUser", [
         location: req.body.location
       })
 
-      res.json({success:true});
+      const authToken = jwt.sign(req.body.email, jwtSecret)
+
+      res.json({success:true, authToken: authToken});
     } catch (error) {
       console.log(error);
       res.json({success:false})
