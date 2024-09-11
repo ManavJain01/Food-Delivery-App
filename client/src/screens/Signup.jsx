@@ -1,3 +1,6 @@
+// IMporting React Icons
+import { ImSpinner9 } from "react-icons/im";
+
 // Importing React Packages
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
@@ -11,33 +14,41 @@ export default function Signup(){
   const navigate = useNavigate();
 
   // UseStates
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [credentials, setCredentials] = useState({name:"", email:"", password:"", geolocation:""})
 
   // Functions
   const handleSubmit = async (e) => {
     //Synthetic event
     e.preventDefault();
-    localStorage.setItem("userName", credentials.name);
-
-
-    const response = await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/createUser`, {
-      method: 'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify({name:credentials.name, email:credentials.email, password:credentials.password, location:credentials.geolocation})
-    });
-    
-    const json = await response.json()
-
-    if(!json.success){
-      alert("Enter Valid Credentials")
-    }else{
-      console.log(json);
+    try {
+      setLoading(true);
       localStorage.setItem("userName", credentials.name);
-      localStorage.setItem("userEmail", credentials.email);
-      localStorage.setItem("authToken", json.authToken);
-      navigate("/");
+  
+      const response = await fetch(`${import.meta.env.VITE_SERVER_LOCATION}/api/createUser`, {
+        method: 'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({name:credentials.name, email:credentials.email, password:credentials.password, location:credentials.geolocation})
+      });
+      
+      const json = await response.json()
+  
+      if(!json.success){
+        alert("Enter Valid Credentials")
+      }else{
+        console.log(json);
+        localStorage.setItem("userName", credentials.name);
+        localStorage.setItem("userEmail", credentials.email);
+        localStorage.setItem("authToken", json.authToken);
+        navigate("/");
+      }   
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -71,9 +82,16 @@ export default function Signup(){
         </div>
 
         <div className="flex gap-5">
-          <button type="submit" className="bg-blue-400 w-fit px-5 py-1 rounded-lg">Submit</button>
+          {loading
+            ?<p className="text-blue-500 flex flex-col items-center gap-2">
+              <ImSpinner9 className="size-10 animate-spin" />
+              <span>Processing...</span>
+            </p>
+            :<button type="submit" className="bg-blue-400 w-fit px-5 py-1 rounded-lg">Submit</button>
+          }
           <Link to="/login" className="bg-red-400 w-fit px-5 py-1 rounded-lg">Already a User</Link>
         </div>
+        {error && <span className="text-3xl text-red-600">{error}</span>}
       </form>
 
       <Footer />
